@@ -1,5 +1,3 @@
-console.log("hello world");
-
 function getComputerChoice(){
     let choice = Math.floor(Math.random()*3)+1;
     if(choice == 1){
@@ -52,20 +50,21 @@ function getPlayerChoice(){
     }
 }
 
-function getRoundResult(round){
+function getRoundWinner(round){
     if (round == 1){
-        return "You Won the round, congrats";
+        return "Winner";
     }
     else if (round == 0){
-        return "Draaaaaw";
+        return "Draw";
     }
     else if (round == -1){
-        return "Haha shit on kid!";
+        return "You got destroyed kid";
     }
     else{
         return 0;
     }
 }
+
 
 function game(){
     result = 0;
@@ -74,20 +73,22 @@ function game(){
         let computerChoice = getComputerChoice();
         let round = PlayRound(playerChoice,computerChoice);
         result += round;
-        console.log(getRoundResult(round));
-        if(getRoundResult(round) == 0){
+        console.log(getRoundWinner(round));
+        if(getRoundWinner(round) == 0){
             return "Game was endend because invalid input";
         }
     }
     if(result > 0){
-        return "you win!!"
+        return "Damn Kid, you're goated"
     }
     else if(result == 0){
-        return "it's a draw";
+        return "Decent, average at best";
     }
     else{
-        return "you lost baby"
+        return "Holy crap dude you're dog water"
     }
 }
 
+
+//start the game
 window.alert(game());
