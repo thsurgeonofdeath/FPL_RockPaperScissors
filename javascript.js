@@ -87,29 +87,3 @@ function reset(){
     PlayerScore.textContent = `${Player_Score}`;
     ComputerScore.textContent = `${Computer_Score}`;
 }
-
-
-// function game(){
-//     result = 0;
-//     for(let i=0;i<5;i++){
-//         let playerChoice = getPlayerChoice();
-//         let computerChoice = getComputerChoice();
-//         let round = PlayRound(playerChoice,computerChoice);
-//         result += round;
-//         console.log(getRoundWinner(round));
-//         if(getRoundWinner(round) == 0){
-//             return "Game was endend because invalid input";
-//         }
-//     }
-//     if(result > 0){
-//         return "Damn Kid, you're goated"
-//     }
-//     else if(result == 0){
-//         return "Decent, average at best";
-//     }
-//     else{
-//         return "Holy crap dude you're dog water"
-//     }
-// }
-//start the game
-// window.alert(game());
