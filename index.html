@@ -5,11 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>7ajara Wara9a Mi9ass</title>
+    <script src="javascript.js" defer></script>
     <link rel="stylesheet" href="style.css">
   </head>
-  <body>
+  <body id="body">
+      <div class="finalResult">
+        <p id="final"></p>
+      </div>
+      <div class="choice">
+        <div class="team">
+          <img class="btn" id="rock" src="https://www.seekpng.com/png/full/279-2792767_1992-93-manchester-united-logo-dls-2018.png" alt="Man Utd"/> 
+          <p>Manchester United</p>
+        </div>
+        <div class="team">
+          <img id="paper" class="btn" src="https://images.touch.global/season/15/teams/kMxxrv02pMDSfkBv4I5lTLdktR5anpEI7akONrEo/vr6o36WbVWi080YyuDOxOcwXt2oK5Uui1BaLreRh.svg" alt="Liverpool"/> 
+          <p>Liverpool</p>
+        </div>
+        <div class="team">
+          <img id="scissors" class="btn" src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c4ee.png" alt="Tottenham"/> 
+          <p>Tottenham Hotspur</p>
+        </div>
+      </div>
 
+      <div class="result">
+        <p id="result_text"> play a game </p>
+      </div>
 
-	<script src="javascript.js"></script>
+      <div class="score">
+        <p> Your Score : <span id="player_score">0</span></p>
+        <p> Computer Score : <span id="comp_score">0</span></p>
+      </div>
+
+    <div>
+      <button id="reset">
+        Reset
+      </button>
+    </div>
   </body>
 </html>

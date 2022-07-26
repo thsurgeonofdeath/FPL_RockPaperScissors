@@ -1,14 +1,17 @@
+let options = ["rock", "paper", "scissors"];
+let Player_Score = 0;
+let Computer_Score = 0;
+let WINNING_SCORE = 5;
+
+const PlayerScore = document.querySelector('#player_score');
+const ComputerScore = document.querySelector('#comp_score');
+const result = document.getElementById('result_text');
+const finalResult = document.getElementById('final')
+
+
 function getComputerChoice(){
-    let choice = Math.floor(Math.random()*3)+1;
-    if(choice == 1){
-        return "rock";
-    }
-    else if(choice == 2){
-        return "paper";
-    }
-    else{
-        return "scissors";
-    }
+    let choice = options[Math.floor(Math.random()*options.length)];
+    return choice;
 }
 
 function PlayRound(playerChoice,computerChoice){
@@ -16,79 +19,97 @@ function PlayRound(playerChoice,computerChoice){
         return 0;
     }
     else if(playerChoice == "rock" && computerChoice == "paper"){
+        Computer_Score ++;
+        result.textContent = "You Lost against Liverpool! as always...";
         return -1;
     }
     else if(playerChoice == "paper" && computerChoice == "scissors"){
+        Computer_Score ++;
+        result.textContent = "Damn you really bottled it against Spurs of all people";
         return -1;
     }
     else if(playerChoice == "scissors" && computerChoice == "rock"){
+        Computer_Score ++;
+        result.textContent = "you lost to an europa league side, proud of you spurs!";
         return -1;
     }
     else if(playerChoice == "paper" && computerChoice == "rock"){
+        Player_Score ++;
+        result.textContent = "5-0!!! Sir Alex Feguson was watching you monster";
         return 1;
     }
     else if(playerChoice == "scissors" && computerChoice == "paper"){
+        Player_Score ++;
+        result.textContent = "Let's all take a moment to laugh at BottlePool";
         return 1;
     }
     else if(playerChoice == "rock" && computerChoice == "scissors"){
+        Player_Score ++;
+        result.textContent = "Don't get over yourself with this win, it's just Spurs";
         return 1;
-    }else{
-        return -100;
+    }
+
+    
+}
+
+function played(e){
+    finalResult.textContent ="";
+    let player = e.target.id;
+    let computer = getComputerChoice();
+    PlayRound(player,computer);
+    PlayerScore.textContent = `${Player_Score}`;
+    ComputerScore.textContent = `${Computer_Score}`;
+    if(Player_Score == WINNING_SCORE){
+        finalResult.textContent = "You won the game, impressive";
+        GameOver();
+    } else if(Computer_Score == WINNING_SCORE){
+        finalResult.textContent = "Hey look it's a bigger bottler than city";
+        GameOver();
     }
 }
 
-function getPlayerChoice(){
-    let choice = window.prompt("choose your weapon: 1 for paper, 2 for scissors, 3 for rock");
-    if (choice == 1){
-        return "paper";
-    }
-    else if (choice == 2){
-        return "scissors";
-    }
-    else if (choice == 3){
-        return "rock";
-    }
+const buttons = document.querySelectorAll('.btn')
+buttons.forEach( button => button.addEventListener('click', played));
+
+function GameOver(){
+    Player_Score = 0;
+    Computer_Score = 0;        
 }
 
-function getRoundWinner(round){
-    if (round == 1){
-        return "Winner";
-    }
-    else if (round == 0){
-        return "Draw";
-    }
-    else if (round == -1){
-        return "You got destroyed kid";
-    }
-    else{
-        return 0;
-    }
+const reseting = document.getElementById('reset');
+reseting.addEventListener('click',reset);
+
+function reset(){
+    Player_Score = 0;
+    Computer_Score = 0;
+    finalResult.textContent = "";
+    result.textContent = "";
+    PlayerScore.textContent = `${Player_Score}`;
+    ComputerScore.textContent = `${Computer_Score}`;
 }
 
 
-function game(){
-    result = 0;
-    for(let i=0;i<5;i++){
-        let playerChoice = getPlayerChoice();
-        let computerChoice = getComputerChoice();
-        let round = PlayRound(playerChoice,computerChoice);
-        result += round;
-        console.log(getRoundWinner(round));
-        if(getRoundWinner(round) == 0){
-            return "Game was endend because invalid input";
-        }
-    }
-    if(result > 0){
-        return "Damn Kid, you're goated"
-    }
-    else if(result == 0){
-        return "Decent, average at best";
-    }
-    else{
-        return "Holy crap dude you're dog water"
-    }
-}
-
-
+// function game(){
+//     result = 0;
+//     for(let i=0;i<5;i++){
+//         let playerChoice = getPlayerChoice();
+//         let computerChoice = getComputerChoice();
+//         let round = PlayRound(playerChoice,computerChoice);
+//         result += round;
+//         console.log(getRoundWinner(round));
+//         if(getRoundWinner(round) == 0){
+//             return "Game was endend because invalid input";
+//         }
+//     }
+//     if(result > 0){
+//         return "Damn Kid, you're goated"
+//     }
+//     else if(result == 0){
+//         return "Decent, average at best";
+//     }
+//     else{
+//         return "Holy crap dude you're dog water"
+//     }
+// }
 //start the game
-window.alert(game());
+// window.alert(game());
